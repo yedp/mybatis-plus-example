@@ -10,6 +10,7 @@ public class User {
     private String name;
     private Integer age;
     private String email;
+    @TableLogic
     private Integer isDel;
 
     public Long getId() {
