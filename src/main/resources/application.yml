@@ -11,4 +11,5 @@ spring:
 # Logger Config
 logging:
   level:
-    com.baomidou.mybatisplus.samples.quickstart: info
+    com: info
+    org: info
