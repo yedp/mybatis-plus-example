@@ -7,12 +7,10 @@ import com.baomidou.mybatisplus.annotation.TableLogic;
 
 import java.util.Date;
 
-public class User {
+public class UserRole {
     private Long id;
     private String userId;
-    private String userName;
-    private Integer age;
-    private String email;
+    private String roleId;
     private Date addTime;
     private Date modifyTime;
     @TableLogic
@@ -34,28 +32,12 @@ public class User {
         this.userId = userId;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getRoleId() {
+        return roleId;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
-    public Integer getAge() {
-        return age;
-    }
-
-    public void setAge(Integer age) {
-        this.age = age;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
+    public void setRoleId(String roleId) {
+        this.roleId = roleId;
     }
 
     @JSONField(format = "yyyy-MM-dd HH:mm:ss")
