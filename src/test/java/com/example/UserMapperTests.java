@@ -1,6 +1,7 @@
 package com.example;
 
 import com.alibaba.fastjson.JSON;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.example.entity.User;
 import com.example.mapper.db1.UserMapper1;
 import com.example.mapper.db2.UserMapper2;
@@ -40,6 +41,12 @@ public class UserMapperTests {
         logger.info("result2:" + result2);
         logger.info("result3:" + result3);
     }
-
+    @Test
+    public void testDel() {
+        System.out.println("----- 普通查询 ------");
+        userMapper1.delete(new QueryWrapper<User>().eq("name", "ydp"));
+        List<User> plainUsers = userMapper1.selectList(new QueryWrapper<User>().eq("name", "ydp"));
+        logger.info("plainUsers:{}", plainUsers);
+    }
 }
 

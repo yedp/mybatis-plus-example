@@ -3,6 +3,8 @@ package com.example.config;
 
 import com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceBuilder;
 import com.baomidou.mybatisplus.core.MybatisConfiguration;
+import com.baomidou.mybatisplus.core.config.GlobalConfig;
+import com.baomidou.mybatisplus.extension.injector.LogicSqlInjector;
 import com.baomidou.mybatisplus.extension.plugins.PaginationInterceptor;
 import com.baomidou.mybatisplus.extension.spring.MybatisSqlSessionFactoryBean;
 import org.apache.ibatis.plugin.Interceptor;
@@ -89,19 +91,15 @@ public class MyBatisPlusConfiguration {
         sqlSessionFactory.setPlugins(new Interceptor[]{
                 paginationInterceptor()
         });
-//        sqlSessionFactory.setGlobalConfig(globalConfiguration());
+        sqlSessionFactory.setGlobalConfig(globalConfiguration());
         return sqlSessionFactory.getObject();
     }
 
- /*   @Bean
-    public GlobalConfiguration globalConfiguration() {
-        GlobalConfiguration conf = new GlobalConfiguration(new LogicSqlInjector());
-        conf.setLogicDeleteValue("-1");
-        conf.setLogicNotDeleteValue("1");
-        conf.setIdType(0);
-        conf.setMetaObjectHandler(new MyMetaObjectHandler());
-        conf.setDbColumnUnderline(true);
-        conf.setRefresh(true);
-        return conf;
-    }*/
+    @Bean
+    public GlobalConfig globalConfiguration() {
+        LogicSqlInjector logicSqlInjector = new LogicSqlInjector();
+        GlobalConfig globalConfig = new GlobalConfig();
+        globalConfig.setSqlInjector(logicSqlInjector);
+        return globalConfig;
+    }
 }
