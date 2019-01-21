@@ -63,11 +63,11 @@
         <!--过滤掉spring和hibernate的一些无用的debug信息-->
         <logger name="org.springframework" level="ERROR">
         </logger>
-        <logger name="org.mybatis" level="ERROR">
+        <logger name="org.mybatis" level="debugaut">
         </logger>
         <logger name="com.example" level="INFO">
         </logger>
-        <root level="ERROR">
+        <root level="debug">
             <appender-ref ref="Console"/>
             <appender-ref ref="RollingFileInfo"/>
             <appender-ref ref="RollingFileWarn"/>
